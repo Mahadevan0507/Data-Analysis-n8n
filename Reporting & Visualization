@@ -1,0 +1,21 @@
+// workflows/report_generation.json
+{
+  "nodes": [
+    {
+      "type": "function",
+      "jsCode": "// Generate insights and summary"
+    },
+    {
+      "type": "googleSheets", // Write results
+      "operation": "append"
+    },
+    {
+      "type": "email", // Send report
+      "subject": "Weekly Data Analysis Report"
+    },
+    {
+      "type": "slack", // Post summary to channel
+      "channel": "#data-reports"
+    }
+  ]
+}
