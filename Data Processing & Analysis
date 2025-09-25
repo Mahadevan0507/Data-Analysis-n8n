@@ -1,0 +1,25 @@
+// workflows/data_processing.json
+{
+  "nodes": [
+    {
+      "type": "function",
+      "jsCode": "
+        // Data cleaning and transformation
+        const data = $input.all();
+        return data.map(item => ({
+          ...item,
+          processed_date: new Date().toISOString(),
+          calculated_metric: item.value * 1.1
+        }));
+      "
+    },
+    {
+      "type": "code", // Python for advanced analysis
+      "pythonCode": "
+        import pandas as pd
+        # Statistical analysis here
+        return {'analysis': 'completed'}
+      "
+    }
+  ]
+}
