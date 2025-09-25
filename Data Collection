@@ -1,0 +1,18 @@
+// workflows/data_collection.json
+{
+  "name": "Multi-Source Data Collector",
+  "nodes": [
+    {
+      "type": "schedule",
+      "cron": "0 9 * * 1" // Runs every Monday at 9 AM
+    },
+    {
+      "type": "httpRequest", // Fetch data from public APIs
+      "url": "https://api.github.com/repos/n8n-io/n8n"
+    },
+    {
+      "type": "googleSheets", // Or CSV from public datasets
+      "operation": "read"
+    }
+  ]
+}
